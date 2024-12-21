@@ -5,6 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>自己紹介ページ</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .video-thumbnail {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16 / 9; /* 16:9のアスペクト比を維持 */
+            margin: 0 auto 10px auto;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img,
+        .video-thumbnail iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            object-fit: cover; /* サムネイルと動画のサイズをぴったりに調整 */
+        }
+
+        .video-thumbnail iframe {
+            display: none;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 10px auto;
+            padding: 10px;
+        }
+
+        .video-info {
+            margin: 10px auto;
+            font-size: 14px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .video-info a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .video-info a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #f4f4f4;
+        }
+
+        .footer-icons {
+            margin-top: 10px;
+        }
+
+        .footer-icons img {
+            width: 40px;
+            height: 40px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -12,16 +81,19 @@
     </header>
     <main>
         <section class="profile">
-            <!-- 動画のみ埋め込む -->
-            <iframe 
-                src="https://www3.nhk.or.jp/news/html/20240215/movie/k10014358471_202402151931_202402151932.html?movie=false" 
-                title="竹井裕也さんの動画"
-                width="560" 
-                height="315" 
-                frameborder="0" 
-                allow="autoplay; encrypted-media" 
-                allowfullscreen>
-            </iframe>
+            <div class="video-thumbnail" onclick="playVideo()">
+                <img src="images/サムネ.png" alt="動画サムネイル">
+                <iframe 
+                    src="https://www3.nhk.or.jp/news/html/20240215/movie/k10014358471_202402151931_202402151932.html?movie=false" 
+                    title="竹井裕也さんの動画"
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="video-info">
+                <p><a href="https://www3.nhk.or.jp/news/html/20240215/k10014358471000.html" target="_blank">引用：日本の去年1年間の名目GDP ドイツに抜かれ世界4位に後退(2024年2月15日 19時42分)</a></p>
+            </div>
             <h2>名前: 竹井裕也</h2>
             <p>東京理科大学4年</p>
             <p>梅村研究室所属</p>
@@ -29,6 +101,20 @@
     </main>
     <footer>
         <p>&copy; 2024 All rights reserved Take</p>
+        <div class="footer-icons">
+            <a href="https://www.facebook.com/profile.php?id=100015596535325" target="_blank">
+                <img src="images/FB.png" alt="Facebook">
+            </a>
+        </div>
     </footer>
+
+    <script>
+        function playVideo() {
+            const thumbnail = document.querySelector('.video-thumbnail img');
+            const iframe = document.querySelector('.video-thumbnail iframe');
+            thumbnail.style.display = 'none';
+            iframe.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
